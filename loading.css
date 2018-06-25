@@ -21,6 +21,30 @@
     animation-delay: 1s;
   }
   
+.icon {
+    width: 1em; 
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
+ .site-welcome{
+     display: none;
+     position: fixed;
+     top: 0;
+     left: 0;
+     height: 100%;
+     width: 100%;
+     background: grey;
+     z-index: 1;
+
+ }
+ .site-welcome.active{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+ }
   @keyframes s{
     0%{
       width: 0px;
