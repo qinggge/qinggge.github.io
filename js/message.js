@@ -54,7 +54,6 @@
             )
         },
         bindEvents: function () {
-            console.log(this)
             this.form.addEventListener('submit', function (e) {
                 e.preventDefault()
                 this.saveMessage()
@@ -64,13 +63,19 @@
             let myForm = this.form
             let content = myForm.querySelector('input[name=content]').value
             let name = myForm.querySelector('input[name=name]').value
-            this.model.save(name,content).then(function (object) {
-                let li = document.createElement('li')
-                li.innerText = `${object.attributes.name}：${object.attributes.content}`
-                let messageList = document.querySelector('#messageList')
-                messageList.appendChild(li)
-                myForm.querySelector('input[name=content]').value = ''
-            })
+            if(name.trim() === ''){
+                alert('请输入姓名！')
+            }else if(content.trim() === ''){
+                alert('请输入留言内容！！')
+            }else{
+                this.model.save(name,content).then(function (object) {
+                    let li = document.createElement('li')
+                    li.innerText = `${object.attributes.name}：${object.attributes.content}`
+                    let messageList = document.querySelector('#messageList')
+                    messageList.appendChild(li)
+                    myForm.querySelector('input[name=content]').value = ''
+                })
+            }
         }
     }
     controller.init(view,model)
